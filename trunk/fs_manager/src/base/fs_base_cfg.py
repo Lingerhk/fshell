@@ -30,3 +30,12 @@ class BaseConf:
     SQL_USER        =   "root"
     SQL_PASSWD      =   "rtxxxx"
     SQL_DB          =   "fshell"
+
+
+    # mongodb conf
+    MG_HOST        =   "222.24.XX.XX"
+    MG_PORT        =   3306
+    MG_USER        =   "root"
+    MG_PASSWD      =   "rtxxxx"
+    MG_DB          =   "fshell"
+
