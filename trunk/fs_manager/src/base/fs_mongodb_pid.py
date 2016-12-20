@@ -23,11 +23,11 @@ def _now_conn(host, port, user, passwd, db):
 
 class DataBase:
     def __init__(self,
-                host = BaseConf.HOST,
-                port = BaseConf.PORT,
-                user = BaseConf.USER,
-                passwd = BaseConf.PASSWD,
-                db = BaseConf.DB):
+                host = BaseConf.MG_HOST,
+                port = BaseConf.MGPORT,
+                user = BaseConf.MG_USER,
+                passwd = BaseConf.MG_PASSWD,
+                db = BaseConf.MG_DB):
         self.host = host
         self.port = port
         self.user = user
@@ -37,7 +37,6 @@ class DataBase:
         self.conn = None
 
     def _get_conn(self):
-        if self.conn == None:
             return _now_conn(self.host, self.port, self.user, self.passwd, self.db)
         
         return self.conn
