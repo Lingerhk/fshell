@@ -14,10 +14,10 @@ def _now_conn(host, port, user, passwd, db):
     server = "mongodb://%s:%s@%s:%s/%s" % (user, passwd, host, port, db)
     conn = pymongo.MongoClient(server)
     try:
-        #Log.debug("...")
+        Log.debug("Conn (host: %s, port: %d, user: %s, passwd: %s, db: %s)" % (host, port, user, passwd, db))
         return conn[db]
     except Exception, e:
-        #Log.err("...")
+        Log.err("Error: (host: %s, port: %d, user: %s, passwd: %s, db: %s)" % (host, port, user, passwd, db))
         return None
 
 
@@ -53,19 +53,17 @@ class DataBase:
         coll = conn[coll]
         return coll.insert(datas)
 
-    def update_data(self, col, datas):
-        col = self.conn["%s"] % (col)
+    def update_data(self, coll, datas):
+        col = self.conn[coll]
         return col.update({'name':'steven1'},{'$set':{'realname':'测试1修改'}}, False,False)
 
 
     def delete_data(self, coll, datas):
-        coll = self.conn["%s"] % (coll)
+        coll = self.conn[coll]
         return coll.remove({'name':'steven1'})
 
-    def query_data(self, col, datas):
+    def query_data(self, coll, datas):
         pass
-
-
 
 
 
