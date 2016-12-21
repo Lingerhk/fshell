@@ -7,4 +7,5 @@
 
 class FsaTaskWeblog:
 
-    pass
+    def start_task(self):
+        pass

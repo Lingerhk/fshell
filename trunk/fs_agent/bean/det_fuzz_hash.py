@@ -10,4 +10,10 @@
 
 class FsaTaskFuzzhash:
 
-    pass
+    
+
+
+
+    def start_task(self):
+
+        pass

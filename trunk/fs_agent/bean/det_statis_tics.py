@@ -7,4 +7,6 @@
 
 class FsaTaskStatics:
 
-    pass
+    def start_task(self):
+
+        pass

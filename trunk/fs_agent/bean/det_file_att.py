@@ -8,4 +8,9 @@
 
 class FsaTaskFileatt:
 
-    pass
+    
+
+
+    def start_task(self):
+
+        pass
