@@ -75,7 +75,7 @@ class FsaTaskClient:
         #
         #
 
-        return MssTaskClient._send_pkt(taskData)
+        return FsaTaskClient._send_pkt(taskData)
 
 
 if __name__ == "__main__":

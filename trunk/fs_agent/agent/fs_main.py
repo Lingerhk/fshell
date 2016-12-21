@@ -11,8 +11,8 @@ import sys
 sys.path.append("..")
 sys.path.append("../base")
 sys.path.append("../bean")
-sys.path.append(".")
 
+from fsa_task import *
 from fsa_task_type import *
 from det_web_log import *
 from det_statis_tics import *
@@ -33,34 +33,35 @@ class FsaMain:
         
         if taskType == FsaTaskType.F_WEBLOG:
             taskWeblog = FsaTaskWeblog()
-            taskWeblogTid = threading.Thread(target = taskWeblog.start_task, args = (task, ))
+            taskWeblogTid = threading.Thread(target = taskWeblog.start_task)
             taskWeblogTid.start()
 
         elif taskType == FsaTaskType.F_STATICS:
             taskStatics = FsaTaskStatics()
-            taskStaticsTid = threading.Thread(target = taskStatics.start_task, args = (task, ))
+            taskStaticsTid = threading.Thread(target = taskStatics.start_task)
             taskStaticsTid.start()
 
         elif taskType == FsaTaskType.F_FILEATT:
             taskFileatt = FsaTaskFileatt()
-            taskFileattTid = threading.Thread(target = taskFileatt.start_task, args = (task, ))
+            taskFileattTid = threading.Thread(target = taskFileatt.start_task)
             taskFileattTid.start()
 
         elif taskType == FsaTaskType.F_DANFUNC:
             taskDanfunc = FsaTaskDanfunc()
-            taskDanfuncTid = threading.Thread(target = taskDanfunc.start_task, args = (task, ))
+            taskDanfuncTid = threading.Thread(target = taskDanfunc.start_task)
             taskDanfuncTid.start()
 
         elif taskType == FsaTaskType.F_FUZZHASH:
             taskFuzzhash = FsaTaskFuzzhash()
-            taskFuzzhashTid = threading.Thread(target = taskFuzzhash.start_task, args = (task, ))
+            taskFuzzhashTid = threading.Thread(target = taskFuzzhash.start_task)
             taskFuzzhashTid.start()
 
         else:
-            pass
+            return False
+
+        return True
 
         
-
     def _task_start(self, taskType):
         self.taskType = taskType
         
@@ -72,7 +73,7 @@ class FsaMain:
         if pid == 0:
             retCode = 0
             try:
-                bRun, = self._task_run(taskType)
+                bRun = self._task_run(taskType)
                 if not bRun: retCode = -1
             except Exception, e:
                 Log.err("taskType: %s, err: %s" %(str(taskType), str(traceback.format_exc())))
@@ -121,7 +122,7 @@ class FsaMain:
 
                         except Exception, e:
                             Log.err("taskType: %s, %s" %(taskType, traceback.format_exc()))
-                            FsaTaskClient.report_task(taskType, MssTaskStatus.T_FAIL, "task_start Fail!")
+                            FsaTaskClient.report_task(taskType, FsaTaskStatus.T_FAIL, "task_start Fail!")
                 
             time.sleep(3)
 
