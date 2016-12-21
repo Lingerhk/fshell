@@ -5,7 +5,7 @@
 # time: 2016-12-10
 # desc: agent main conf
 
-
+import os
 from fs_base_cfg import *
 
 class EnvEnum:
