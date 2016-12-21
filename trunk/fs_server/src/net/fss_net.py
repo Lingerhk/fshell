@@ -207,7 +207,7 @@ class FsNet:
             events = self.poller.poll(1000)
             for fd, flag in events:
                 try:
-                    print fd, flag
+                    #print fd, flag
                     if not self.sessionMap.has_key(fd):
                         continue
 
