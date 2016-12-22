@@ -6,6 +6,7 @@
 # desc: Agent 网络数据包发送
 
 import sys
+
 sys.path.append('../net')
 sys.path.append("../base")
 
@@ -58,9 +59,9 @@ class FsaNet:
         sock = None
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
-            code = sock.connect_ex((SERVER_IP, SERVER_PORT))
+            code = sock.connect_ex((BaseConf.SERVER_IP, BaseConf.SERVER_PORT))
             if code != 0:
-                Log.err("sock.connect(%s, %d) ERR(%d)" % (SERVER_IP, SERVER_PORT, code)) 
+                Log.err("sock.connect(%s, %d) ERR(%d)" % (BaseConf.SERVER_IP, BaseConf.SERVER_PORT, code)) 
                 sock.close()
                 return False, "connect to route_srv Fail!"
             
@@ -73,7 +74,7 @@ class FsaNet:
             
         
         except Exception, e:
-            Log.err("sock.connect(%s, %d) ERR(%s)" %(SERVER_IP, SERVER_PORT, str(e)))
+            Log.err("sock.connect(%s, %d) ERR(%s)" %(BaseConf.SERVER_IP, BaseConf.SERVER_PORT, str(e)))
             if sock != None: sock.close()
             return False, str(e)
             

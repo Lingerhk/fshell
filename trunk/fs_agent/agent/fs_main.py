@@ -8,9 +8,9 @@
 
 import os
 import sys
-sys.path.append(".")
-sys.path.append("./base")
-sys.path.append("./bean")
+sys.path.append("../base")
+sys.path.append("../bean")
+sys.path.append("../net")
 
 from fsa_task import *
 from fsa_task_type import *
