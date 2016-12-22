@@ -6,12 +6,11 @@
 # desc: Agent 网络数据包发送
 
 import sys
-sys.path.append('../')
 sys.path.append('../net')
 sys.path.append("../base")
 
 from fs_log import *
-from fsa_cfg import *
+from fs_base_cfg import *
 from fsa_nethead import *
 
 
