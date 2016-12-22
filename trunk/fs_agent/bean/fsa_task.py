@@ -8,8 +8,6 @@
 import sys
 import uuid
 
-
-sys.path.append("../base")
 sys.path.append("../net")
 from fsa_net import *
 
